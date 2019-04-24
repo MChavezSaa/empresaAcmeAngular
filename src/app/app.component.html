@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-primary">
   <a class="navbar-brand" href="#">
-    <img src="../assets/acme-logo.png" alt="Acme Logo" width="100">
+    <img src="../assets/logo-acme.png" alt="Acme Logo" width="100">
   </a>
   <div>
     <h1 id="titulo">{{title}}</h1>
@@ -21,7 +21,7 @@
       <div class="card-header">Lista de Productos</div>
       <div class="card-body text-primary"></div>
       <div class="table-responsive">
-        <table class="table">
+        <table class="table"*ngIf="products && products.length">
           <thead>
             <tr>
               <th>
@@ -37,13 +37,13 @@
               <th>Rating</th>
             </tr>
           </thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Producto</th>
-            <th>Codigo</th>
-            <th>Disponible</th>
-            <th>Precio</th>
-            <th>Rating</th>
+          <tr *ngFor="let product of products">
+            <td><img src="../assets/sin-imagen.png" title="Imagen del Producto"></td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.starRating}}</td>
           </tr>
         </table>
       </div>
