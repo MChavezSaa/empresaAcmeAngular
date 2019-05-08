@@ -1,14 +1,36 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product';
+import {OnChanges, OnInit, DoCheck, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Empresa ACME';
-  products: IProduct [] = [
+  _listFilter: string;
+  filteredProducts: IProduct[];
+
+get listFilter():string{
+  return this._listFilter;
+}
+
+set listFilter(value: string){
+  this.listFilter ? this.performFilter(this.listFilter): this.products;
+}
+
+performFilter(filterBy: string): IProduct[]{
+  filterBy = filterBy.toLocaleLowerCase();
+  return this.products.filter((product: IProduct) => 
+  product.productName.toLocaleLowerCase().indexOf(filterBy)!== -1);
+}
+
+ngOnInit(): void{
+  this.filteredProducts= this.products;
+}
+
+  products: IProduct[] = [
     {
       "productId": 1,
       "productName": "Zapatillas de lona",
@@ -17,7 +39,7 @@ export class AppComponent {
       "description": "Zapatillas de lona con caña marca Converse.",
       "price": 19.95,
       "starRating": 3.2,
-      "imageUrl": "https://cdn.pixabay.com/photo/2013/07/12/18/20/chucks-153310_1280.png"
+      "imageUrl": "https://cdn.pixabay.com/photo/2017/10/05/09/12/shoes-2818757_960_720.png"
   },
   {
       "productId": 2,
@@ -27,7 +49,7 @@ export class AppComponent {
       "description": "Bolso de cuero, con forro de seda.",
       "price": 32.99,
       "starRating": 4.2,
-      "imageUrl": "https://cdn.pixabay.com/photo/2017/09/08/07/59/bag-2728000_1280.png"
+      "imageUrl": "https://cdn.pixabay.com/photo/2016/11/23/18/12/bag-1854148_960_720.jpg"
   },
   {
       "productId": 5,
@@ -37,7 +59,7 @@ export class AppComponent {
       "description": "Reloj blanco de dos campanillas tipo retro.",
       "price": 8.9,
       "starRating": 4.8,
-      "imageUrl": "https://cdn.pixabay.com/photo/2017/03/26/12/36/alarm-clock-2175382_1280.jpg"
+      "imageUrl": "https://cdn.pixabay.com/photo/2017/01/08/22/27/alarm-1964166_960_720.jpg"
   },
   {
       "productId": 8,
@@ -47,7 +69,7 @@ export class AppComponent {
       "description": "Cámara fotográfica digital con Zoom óptico y 16 GB de RAM interna",
       "price": 11.55,
       "starRating": 3.7,
-      "imageUrl": "https://cdn.pixabay.com/photo/2017/02/01/10/47/avatars-2029585_960_720.png"
+      "imageUrl": "https://cdn.pixabay.com/photo/2018/01/28/21/14/lens-3114729_960_720.jpg"
   },
   {
       "productId": 10,
@@ -57,7 +79,7 @@ export class AppComponent {
       "description": "Taladro eléctrico de percusión, 200 RPM, marca DrillBill",
       "price": 35.95,
       "starRating": 4.6,
-      "imageUrl": "https://cdn.pixabay.com/photo/2013/07/12/19/30/power-drill-154903_1280.png"
+      "imageUrl": "https://cdn.pixabay.com/photo/2013/07/12/19/30/power-drill-154903_960_720.png"
   }
   ];  ;
 }
