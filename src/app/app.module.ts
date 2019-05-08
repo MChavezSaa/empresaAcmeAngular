@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { registerLocaleData } from '@angular/common';
-import  localeEsCL from '@angular/common/locales/es-CL'
+import  localeEsCL from '@angular/common/locales/es-CL';
 import {FormsModule} from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 
