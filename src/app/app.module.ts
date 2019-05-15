@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { from } from 'rxjs';
 import { StarComponent } from './product/product-list/star/star.component';
+import { DefaultPipe } from './product/product-list/Image.pipe';
 
 
 registerLocaleData(localeEsCL, 'es-CL');
@@ -16,7 +17,8 @@ registerLocaleData(localeEsCL, 'es-CL');
   declarations: [
     AppComponent,
     ProductListComponent,
-    StarComponent
+    StarComponent,
+    DefaultPipe
   ],
   imports: [
     BrowserModule,

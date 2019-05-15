@@ -22,14 +22,16 @@
             </tr>
           </thead>
           <tr *ngFor="let product of products">
-            <td><img *ngIf='showImage'
-              [src]='product.imageUrl' 
+            <td>
+              <img *ngIf='showImage'
+              [src]=" product.imageUrl | default: '../../assets/sin'"
               title="Imagen del Producto"
               [style.width.px]='imageWidth'
-              [style.margin.px]='imageMargin'></td>
+              [style.margin.px]='imageMargin'/>
+            </td>
             <td>{{product.productName}}</td>
             <td>{{product.productCode}}</td>
-            <td>{{product.releaseDate | date:'fullDate'}}</td>
+            <td>{{product.releaseDate | date:'dd/MM/yyyy'}}</td>
             <td>{{product.price | currency: 'USD' :true:'2.2-3'}}</td>
             <!--<td>{{product.starRating}}</td>-->
             <td><app-star [rating]="product.starRating"></app-star></td>

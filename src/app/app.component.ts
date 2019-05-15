@@ -40,7 +40,7 @@ ngOnInit(): void{
       "description": "Zapatillas de lona con caña marca Converse.",
       "price": 19.95,
       "starRating": 33.2,
-      "imageUrl": "https://cdn.pixabay.com/photo/2017/10/05/09/12/shoes-2818757_960_720.png"
+      "imageUrl": " "
   },
   {
       "productId": 2,
