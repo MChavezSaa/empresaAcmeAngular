@@ -5,12 +5,13 @@ import {OnChanges, OnInit, DoCheck, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit{
   title = 'Empresa ACME';
   _listFilter: string;
   filteredProducts: IProduct[];
+  today: number = Date.now();
 
 get listFilter():string{
   return this._listFilter;
