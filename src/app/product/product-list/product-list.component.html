@@ -29,8 +29,8 @@
               [style.margin.px]='imageMargin'></td>
             <td>{{product.productName}}</td>
             <td>{{product.productCode}}</td>
-            <td>{{product.releaseDate}}</td>
-            <td>{{product.price | currency: 'USD ' :true:'2.2-2'}}</td>
+            <td>{{product.releaseDate | date:'fullDate'}}</td>
+            <td>{{product.price | currency: 'USD' :true:'2.2-3'}}</td>
             <!--<td>{{product.starRating}}</td>-->
             <td><app-star [rating]="product.starRating"></app-star></td>
           </tr>
