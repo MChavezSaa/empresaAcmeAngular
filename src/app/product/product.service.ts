@@ -14,8 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts():Observable<IProduct[]>{
-    return this.http.get<IProduct[]>('http://localhost:3000/productos').pipe(map((res:any)=>res.data));
-
+    return this.http.get<IProduct[]>('http://localhost:3000/productos').pipe(map((res:any)=>res.data));  
     /* 
     return [
       {
@@ -77,5 +76,9 @@ export class ProductService {
     ] ; */
   }
 
+  
+  saveProduct(product: IProduct){
+     return this.http.post<IProduct[]>('http://localhost:3000/producto',product);
+  }
      /*  */
 }

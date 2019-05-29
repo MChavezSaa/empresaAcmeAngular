@@ -1,6 +1,7 @@
 import { Component  } from '@angular/core';
 import { IProduct } from './product';
 import { ProductService } from './product/product.service';
+import { CodeNode } from 'source-list-map';
 
 
 @Component({
@@ -48,8 +49,31 @@ export class AppComponent {
       date: '2019-03-07',
       price: Math.round(Math.random()*(130-20)+20),
       description: 'Producto de prueba',
+      rating:Math.round(Math.random()*(200-1)+1),
       image:''
     };
+    this.guardarProducto(datos);
   }
-  
+  rand_code(chars, lon): string {
+    let code="";
+    for(let x=0; x<lon;x++){
+      let rand= Math.floor(Math.random()* chars.length);
+      code+= chars.substr(rand,1);
+    }
+    return code;
+  };
+
+generarCodigo(): string{
+  return this.rand_code('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ',3) + '-' + this.rand_code('0123456789',4);
+};
+
+guardarProducto(producto: IProduct){
+  this.productService.saveProduct(producto).subscribe(()=> {
+    return this.productService.getProducts().subscribe((res: any[])=> {
+      this.products= res;
+      this.filteredProducts= res;
+    });
+  });
+}
+
 }
