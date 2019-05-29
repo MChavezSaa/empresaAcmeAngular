@@ -1,41 +1,51 @@
- 
- 
- <div class="card border-primary mb-3 text-center">
-      <div class="card-header">Lista de Productos</div>
-      <div class="card-body text-primary"></div>
-      <div class="table-responsive">
-        <table class="table"*ngIf="products && products.length">
-          <thead>
-            <tr>
-              <th>
-                <button (click)='toggleImage()' class="btn btn-primary">
-                  <i class="fa fa-eye"></i>
-                  {{showImage ? 'Ocultar': 'Mostrar'}}
-                  Imagenes
-                </button>
-              </th>
-              <th>Product</th>
-              <th>Code</th>
-              <th>Available</th>
-              <th>Price</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
-          <tr *ngFor="let product of products">
-            <td>
-              <img *ngIf='showImage'
-              [src]=" product.imageUrl | default: '../../assets/sin'"
-              title="Imagen del Producto"
-              [style.width.px]='imageWidth'
-              [style.margin.px]='imageMargin'/>
-            </td>
-            <td>{{product.productName}}</td>
-            <td>{{product.productCode}}</td>
-            <td>{{product.releaseDate | date:'dd/MM/yyyy'}}</td>
-            <td>{{product.price | currency: 'USD' :true:'2.2-3'}}</td>
-            <!--<td>{{product.starRating}}</td>-->
-            <td><app-star [rating]="product.starRating"></app-star></td>
-          </tr>
-        </table>
+<div class="card">
+    <div class="card-body">
+  
+      <div class="card border-primary mb-3 text-center">
+        <div class="card-header">Lista de productos</div>
+        <div class="card-body text-primary">
+  
+          <div class="table-responsive">
+            <!--si existe y el largo != 0 -->
+            <table class="table" *ngIf="products && products.length">
+              <thead>
+                <tr>
+                  <th>
+                    <button (click)="toggleImage()" class="brn btn-primary">
+                      <i class="fa fa-eye"></i>
+                      {{showImage?'Ocultar':'Mostrar'}}
+                      Imágenes
+                    </button>
+                  </th>
+                  <th>Producto</th>
+                  <th>Código</th>
+                  <th>Disponible</th>
+                  <th>Precio</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+  
+              <tr *ngFor="let product of products">
+                <td>
+                  <img *ngIf="showImage" 
+                        [src]="product.imageUrl | default: '../../assets/sin-imagen.png'"
+                        [title]="product.productName"
+                        [style.width.px]="imageWidth" 
+                        [style.margin.px]="imageMargin" >
+                </td>
+                <td>{{product.productName}}</td>
+                <td>{{product.productCode | uppercase}}</td>
+                <td>{{product.releaseDate | date:'fullDate'}}</td>
+                <td>{{product.price | currency: 'EUR':'symbol-narrow':'1.2-2'}}</td>
+                <td><app-star [rating]="product.starRating"></app-star></td>
+              </tr>
+            </table>
+          </div>
+  
+        </div>
+  
+  
       </div>
- </div>
+    </div>
+  
+  </div>

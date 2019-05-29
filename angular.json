@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "empresaAcme": {
+    "ejemplo1": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/empresaAcme",
+            "outputPath": "dist/ejemplo1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "empresaAcme:build"
+            "browserTarget": "ejemplo1:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "empresaAcme:build:production"
+              "browserTarget": "ejemplo1:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "empresaAcme:build"
+            "browserTarget": "ejemplo1:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
         }
       }
     },
-    "empresaAcme-e2e": {
+    "ejemplo1-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "empresaAcme:serve"
+            "devServerTarget": "ejemplo1:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "empresaAcme:serve:production"
+              "devServerTarget": "ejemplo1:serve:production"
             }
           }
         },
@@ -132,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "empresaAcme"
+  "defaultProject": "ejemplo1"
 }
