@@ -27,14 +27,11 @@ export class AppComponent {
           this.products=res;
           this.filteredProducts = res;
           console.log(this.products);
-            
         }, 
     err => console.log(err)
     )
 
   }
-
-  
   public get listFilter() : string {
     return this._listFilter;
   }
@@ -42,6 +39,17 @@ export class AppComponent {
   public set listFilter(v : string) {
     this._listFilter = v;
     this.filteredProducts = this.listFilter? this.performFilter(this.listFilter) : this.products;
+  }
+  
+  crearProducto(){
+    let datos: any ={
+      name: 'Producto'+ Math.round(Math.random()* (100-1)+1),
+      code: this.generarCodigo(),
+      date: '2019-03-07',
+      price: Math.round(Math.random()*(130-20)+20),
+      description: 'Producto de prueba',
+      image:''
+    };
   }
   
 }
