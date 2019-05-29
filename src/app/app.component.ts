@@ -10,7 +10,7 @@ import { ProductService } from './product/product.service';
   providers: [ProductService]
 })
 export class AppComponent {
-  title = 'ACME web Page';
+  title = 'Empresa ACME';
   _listFilter : string;
   filteredProducts: IProduct[];
   products: IProduct [];

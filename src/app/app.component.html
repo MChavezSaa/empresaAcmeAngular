@@ -20,9 +20,11 @@
     Filtrado por: {{listFilter}}
   </div>
 </div>
-
+<div class="col-md-2">
+    <button class="btn btn-primary" (click)="crearProducto()">Crear producto</button>
+</div>
 <app-product-list [datos]="filteredProducts"></app-product-list>
 
 <div class="footer"> 
-  <p class ="text-center">Creado por Francisca Palma</p>
+  <p class ="text-center">Creado por Matías Chávez</p>
 </div>
