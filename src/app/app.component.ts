@@ -49,7 +49,7 @@ export class AppComponent {
       date: '2019-03-07',
       price: Math.round(Math.random()*(130-20)+20),
       description: 'Producto de prueba',
-      rating:Math.round(Math.random()*(200-1)+1),
+      rating:Math.round(Math.random()*(200-1)+1),      
       image:''
     };
     this.guardarProducto(datos);
