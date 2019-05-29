@@ -14,14 +14,13 @@
   <div class="col-md-2">Filtrar por:</div>
   <div class="col-md-4">
     <input [(ngModel)]="listFilter" type="text" />
-
   </div>
   <div class="col-md-4">
     Filtrado por: {{listFilter}}
   </div>
-</div>
 <div class="col-md-2">
     <button class="btn btn-primary" (click)="crearProducto()">Crear producto</button>
+</div>
 </div>
 <app-product-list [datos]="filteredProducts"></app-product-list>
 

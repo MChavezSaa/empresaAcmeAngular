@@ -38,6 +38,19 @@
                 <td>{{product.releaseDate | date:'fullDate'}}</td>
                 <td>{{product.price | currency: 'EUR':'symbol-narrow':'1.2-2'}}</td>
                 <td><app-star [rating]="product.starRating"></app-star></td>
+                <td>
+                  <button class="btn btn-success" (click)="viewProduct(producto)">
+                    <i class="fa fa-eye"></i>Ver
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-warning" (click)="updateProduct(product.productId, product)">
+                    <i class="fa fa-pencil"></i>Editar
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="deleteProduct(product.productId)">
+                    <i class="fa fa-trash"></i>Borrar
+                  </button>
+                </td>
               </tr>
             </table>
           </div>

@@ -19,4 +19,7 @@ export class ProductService {
   saveProduct(product: IProduct){
      return this.http.post<IProduct[]>('http://localhost:3000/producto',product);
   }
-}
+  deleteProduct(id: number){
+    return this.http.delete('http://localhost:3000/producto/'+id);
+ }
+}//this.http.delete('http://localhost:3000/producto'+id);
