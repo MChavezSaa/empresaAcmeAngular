@@ -19,14 +19,14 @@
     Filtrado por: {{listFilter}}
   </div>
   <div class="col-md-2">
-    <button class='btn btn-primary' (click)='abrirModal()'>
+    <button class='btn btn-primary' (click)='crearProducto()'> <!--(click)='abrirModal()'-->
       Crear Producto
     </button>
 
   </div>
 </div>
 
-<app-product-list [datos]="filteredProducts"></app-product-list>
+<app-product-list [datos]="productService.filteredProducts"></app-product-list>
 
 <div class="footer"> 
   <p class ="text-center">Creado por Matías Chávez</p>

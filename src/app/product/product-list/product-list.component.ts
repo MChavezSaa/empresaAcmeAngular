@@ -21,12 +21,14 @@ export class ProductListComponent implements OnInit {
       this.showImage=!this.showImage;
   }
 
-  constructor(private productService : ProductService ) { }
+  constructor(
+    private productService : ProductService,
+    /*private products: IProduct[] */) { }
 
   deleteProduct(id:number){
     this.productService.deleteProduct(id).subscribe((res:any[])=>{
         return this.productService.getProducts().subscribe((res:any[])=>{
-          this.products = res;
+          this.productService.products = res;
         },
         err => console.log(err));
     
@@ -51,7 +53,7 @@ export class ProductListComponent implements OnInit {
     
     this.productService.updateProduct(id,datos).subscribe(()=>{
       return this.productService.getProducts().subscribe((res:any[])=>{
-        this.products=res;
+        this.productService.products=res;
       },
       err=>console.log(err));
     })
