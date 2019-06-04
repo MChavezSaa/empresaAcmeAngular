@@ -10,6 +10,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEsCl from '@angular/common/locales/es-CL';
 import { DefaultPipe } from './default.pipe'
 import { HttpClientModule } from '@angular/common/http';
+import { ModalAddComponent } from './service/modal-add/modal-add.component';
 
 registerLocaleData(localeEsCl,'es-CL')
 
@@ -18,7 +19,8 @@ registerLocaleData(localeEsCl,'es-CL')
     AppComponent,
     ProductListComponent,
     StarComponent,
-    DefaultPipe
+    DefaultPipe,
+    ModalAddComponent
     
   ],
   imports: [

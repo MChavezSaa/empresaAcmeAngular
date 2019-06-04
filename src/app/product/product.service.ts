@@ -13,13 +13,21 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+  saveProduct(product: IProduct){
+    return this.http.post<IProduct[]>('http://localhost:3000/producto',product);
+
+  }
+
   getProducts():Observable<IProduct[]>{
     return this.http.get<IProduct[]>('http://localhost:3000/productos').pipe(map((res:any)=>res.data));
   }
-  saveProduct(product: IProduct){
-     return this.http.post<IProduct[]>('http://localhost:3000/producto',product);
+  
+  deleteProduct(id){
+    return this.http.delete("http://localhost:3000/producto/"+id);
   }
-  deleteProduct(id: number){
-    return this.http.delete('http://localhost:3000/producto/'+id);
- }
-}//this.http.delete('http://localhost:3000/producto'+id);
+
+  updateProduct(id,product){
+    return this.http.put("http://localhost:3000/producto/"+id,product);
+  }
+
+}

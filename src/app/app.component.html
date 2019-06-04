@@ -18,12 +18,18 @@
   <div class="col-md-4">
     Filtrado por: {{listFilter}}
   </div>
-<div class="col-md-2">
-    <button class="btn btn-primary" (click)="crearProducto()">Crear producto</button>
+  <div class="col-md-2">
+    <button class='btn btn-primary' (click)='abrirModal()'>
+      Crear Producto
+    </button>
+
+  </div>
 </div>
-</div>
+
 <app-product-list [datos]="filteredProducts"></app-product-list>
 
 <div class="footer"> 
-  <p class ="text-center">Creado por Matías Chávez</p>
+  <p class ="text-center">Creado por Francisca Palma</p>
 </div>
+
+<app-modal-add></app-modal-add>
