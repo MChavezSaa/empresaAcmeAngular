@@ -11,7 +11,7 @@ import { ModalAddService } from './service/modal-add.service';
   providers: [ProductService]
 })
 export class AppComponent {
-  title = 'ACME web Page';
+  title = 'Empresa Acme';
   _listFilter : string;
   filteredProducts: IProduct[];
   products: IProduct [];
