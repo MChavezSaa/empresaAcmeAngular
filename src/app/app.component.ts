@@ -88,9 +88,4 @@ export class AppComponent {
   abrirModal(){
     this.modalAddService.mostrarModal();
   }
-  
 }
-/** hacer modificaciones 
- * - hacer que la lista de productos sea parte del productService
-
-*/
