@@ -18,7 +18,7 @@ export class ModalAddComponent implements OnInit {
         name: ['',[Validators.required]],
         code: ['',[Validators.required]],
         date: ['',[Validators.required]],
-        price: ['',[Validators.required]],
+        price: ['',[Validators.required, Validators.min(0)]],
         description: ['',[Validators.required]],
         rating: ['',[Validators.required]]
       });

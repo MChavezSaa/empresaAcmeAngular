@@ -15,6 +15,10 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
               <input formControlName="name" class="form-control" type="text" placeholder="Nombre">
+              <div *ngIf="formProduct.get('name').errors && (formProduct.get('name').touched || 
+              formProduct.get('name').dirty)" class="alert alert-danger">
+                El nombre del producto es obligatorio.
+              </div>
             </div>
           </div>
           <!--Codigo del producto-->
@@ -36,6 +40,10 @@
                 <label class="col-2 col-form-label">Precio</label>
                 <div class="col-8">
                   <input formControlName="price" class="form-control" type="number" placeholder="Precio">
+                  <div *ngIf="formProduct.get('price').errors && (formProduct.get('price').touched || 
+                      formProduct.get('price').dirty)" class="alert alert-danger">
+                      El precio no puede ser negativo
+                    </div>
                 </div>
               </div>
            <!--Rating del producto-->
@@ -55,7 +63,7 @@
         </div>
         <!--Modal footer-->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit"  [disabled]="!formProduct.valid" class="btn btn-primary">Guardar</button>
           <button (click)="ocultarModal()" type="button" class="btn btn-danger" >Cerrar</button>
         </div>
       </form>
