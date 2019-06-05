@@ -29,8 +29,13 @@ export class ProductService {
     return this.http.delete("http://localhost:3000/producto/"+id);
   }
 
-  updateProduct(id,product){
+ /* updateProduct(id,product){
     return this.http.put("http://localhost:3000/producto/"+id,product);
+  }*/
+  updateProduct(id, product){
+    console.log("probando" + id + product);
+    return this.http.put('http://localhost:3000/producto/'+ id,product)//this.http.put('http://localhost:3000/producto/'+ id , product);
+    
   }
 
   generarCodigo(): string {
