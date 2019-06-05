@@ -16,7 +16,7 @@ export class ModalAddComponent implements OnInit {
               private formBuilder: FormBuilder) {
       this.formProduct = this.formBuilder.group({
         name: ['',[Validators.required]],
-        code: ['',[Validators.required, Validators.pattern('^[a-zA-Z]{3,3}-[0-9]{4,4}$')],],
+        code: ['',[Validators.required, Validators.pattern('^[a-zA-Z]{3,3}-[0-9]{4,4}$')]],
         date: ['',[Validators.required]],
         price: ['',[Validators.required, Validators.min(0)]],
         description: ['',[Validators.required]],
