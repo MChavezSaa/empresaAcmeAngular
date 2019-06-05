@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,8 @@ export class ModalAddService {
 
   public oculto: string ='';
 
-  constructor() { }
+
+  constructor() {}
 
   ocultarModal(){
     this.oculto= "";
