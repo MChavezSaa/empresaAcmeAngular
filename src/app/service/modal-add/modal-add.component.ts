@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalAddService } from '../modal-add.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ProductService } from 'src/app/product/product.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modal-add',
@@ -9,14 +12,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ModalAddComponent implements OnInit {
   
-  formProduct: FormGroup
-  
+  formProduct: FormGroup;
   constructor( 
     private modalAddService: ModalAddService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder, 
+              private productService: ProductService) {
       this.formProduct = this.formBuilder.group({
         name: ['',[Validators.required]],
-        code: ['',[Validators.required, Validators.pattern('^[a-zA-Z]{3,3}-[0-9]{4,4}$')]],
+        code: ['',[Validators.required, Validators.pattern('^[a-zA-Z]{3,3}-[0-9]{4,4}$')], this.codeValidator()],
         date: ['',[Validators.required]],
         price: ['',[Validators.required, Validators.min(0)]],
         description: ['',[Validators.required]],
@@ -24,6 +27,21 @@ export class ModalAddComponent implements OnInit {
       });
      }
 
+  codeValidator(): AsyncValidatorFn{
+    return(control: AbstractControl): Observable<{ [key: string]:any } | null> =>{
+      let code = control.value;
+      console.log("cliente - code: "+ code);
+      return this.productService.searchProduct(control.value)
+      .pipe(map(res =>{
+        if(res && res.length){
+          console.log('codigo encontrado');
+          return {'existe': true}
+        }
+        console.log('codigo no existe');
+        return null;
+      }));
+    }
+  }
   saveData(){
     console.log(this.formProduct.value);
   }

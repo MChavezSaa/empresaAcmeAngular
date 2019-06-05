@@ -1,57 +1,76 @@
 <div class="card">
-    <div class="card-body">
-      <div class="card border-primary mb-3 text-center">
-        <div class="card-header">Lista de productos</div>
-        <div class="card-body text-primary">
-          <div class="table-responsive">
-            <table class="table" *ngIf="products && products.length">
-              <thead>
-                <tr>
-                  <th>
-                    <button (click)="toggleImage()" class="brn btn-primary">
-                      <i class="fa fa-eye"></i>
-                      {{showImage?'Ocultar':'Mostrar'}}
-                      Imágenes
-                    </button>
-                  </th>
-                  <th>Producto</th>
-                  <th>Código</th>
-                  <th>Disponible</th>
-                  <th>Precio</th>
-                  <th>Rating</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tr *ngFor="let product of products">
-                <td>
-                  <img *ngIf="showImage" 
-                        [src]="product.imageUrl | default: '../../assets/sin-imagen.png'"
-                        [title]="product.productName"
-                        [style.width.px]="imageWidth" 
-                        [style.margin.px]="imageMargin" >
-                </td>
-                <td>{{product.productName}}</td>
-                <td>{{product.productCode | uppercase}}</td>
-                <td>{{product.releaseDate | date:'fullDate'}}</td>
-                <td>{{product.price | currency: 'EUR':'symbol-narrow':'1.2-2'}}</td>
-                <td><app-star [rating]="product.starRating"></app-star></td>
-                <td>
-                  <button class= "btn btn-success" (click)="viewProduct(product)">
-                    <i class="fas fa-eye">Ver</i>
-                  </button>
-                  &nbsp;
-                  <button class= "btn btn-warning" (click)="updateProduct(product.productId,product)" >
-                    <i class="fas fa-pencil-alt">Editar</i>
-                  </button>
-                  &nbsp;
-                  <button class="btn btn-danger" (click)="deleteProduct(product.productId)">
-                    <i class="fas fa-trash-alt">Borrar</i>
-                  </button>
-              </tr>
-            </table>
-          </div>
-        </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">Filtrar por:</div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter" />
+      </div>
+      <div class="col-md-4">
+        Filtrado por: {{listFilter}}
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" (click)="abrirModal()">
+          <!--crearProducto()-->
+          Crear Producto
+        </button>
       </div>
     </div>
-  
+    <br>
   </div>
+</div>
+
+<div class="card border-primary mb-3 text-center">
+  <div class="card-header">Lista de Productos</div>
+  <div class="card-body text-primary">
+  <div class="table-responsive">
+    <table class="table" > <!-- *ngIf="products && products.length"-->
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary"
+                    (click)="toggleImage()">
+              <i class="fa fa-eye"></i>
+              {{showImage ? 'Ocultar' : 'Mostrar'}} Imágenes</button>
+          </th>
+          <th>Producto</th>
+          <th>Código</th>
+          <th>Disponible</th>
+          <th>Precio</th>
+          <th>Rating</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let product of productService.products">
+        <td><img *ngIf="showImage" 
+                [src]="product.imageUrl | default:'../../assets/sin-imagen.png'" 
+                [title]="product.productName | uppercase"
+                [style.width.px]="imageWidth"
+                [style.margin.px]="imageMargin"
+                >
+        </td>
+        <td>{{product.productName}}</td>
+        <td>{{product.productCode}}</td>
+        <td>{{product.releaseDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{product.price | currency:'USD':'symbol-narrow':'1.2-3'}}</td>
+        <td><app-star [rating]="product.starRating" ></app-star></td>
+        <td>
+          <button class="btn btn-success" (click)="viewProduct(product)">
+            <i class="fa fa-eye"></i> Ver
+          </button>
+          &nbsp;
+          <button class="btn btn-warning" (click)="updateProduct(product.productID,product)">
+            <i class="fas fa-pencil-alt"></i> Editar
+          </button>
+          &nbsp;
+          <button class="btn btn-danger" (click)="deleteProduct(product.productID)">
+            <i class="fas fa-trash-alt"></i> Borrar
+          </button>
+        </td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</div>
+<h4 class="text-center"> Constanza Conejeros - Desarrollo Frontend con Angular </h4>
+
+<app-modal-add></app-modal-add>

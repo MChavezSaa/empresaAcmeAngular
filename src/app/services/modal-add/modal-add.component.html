@@ -1,0 +1,96 @@
+<!-- The Modal -->
+<div class="modal" [ngStyle]="{'display':modalAddService.oculto}" tabindex="-1" role="dialog">
+  <!--id="myModal"--> <!--'block' modalAddService.oculto -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="formProduct" (ngSubmit)="saveData()" novalidate>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Crear Producto</h4>
+          <button (click)="ocultarModal()" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Nombre del producto -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+              <input class="form-control" type="text" placeholder="Nombre" formControlName="name">
+              <div *ngIf="formProduct.get('name').errors && (formProduct.get('name').touched 
+                          || formProduct.get('name').dirty)"
+                    class="alert alert-danger"> El nombre del producto es obligatorio
+              </div>
+            </div>
+          </div>
+
+          <!-- Codigo del Producto -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Código</label>
+            <div class="col-8">
+              <input class="form-control" type="text" placeholder="Código" formControlName="code">
+              <span *ngIf="formProduct.get('code').pending"> (Buscando ...)</span>
+              <div *ngIf="formProduct.get('code').errors && formProduct.get('code').errors?.existe"
+                    class="alert alert-danger"> El código ingresado ya existe
+              </div>
+            <!-- 
+              <div *ngIf="formProduct.get('code').errors && (formProduct.get('code').touched 
+                      || formProduct.get('code').dirty)" class="alert alert-danger"> Ingrese un codigo valido con el formato XXX-0000
+              </div>-->
+            </div>
+          </div>
+
+          <!-- Fecha de Registro -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Fecha</label>
+            <div class="col-8">
+              <input class="form-control" type="date" placeholder="Fecha" formControlName="date">
+              <div *ngIf="formProduct.get('date').errors && (formProduct.get('date').touched 
+                    || formProduct.get('date').dirty)" class="alert alert-danger"> Debe ingresar una fecha
+              </div>
+            </div>
+          </div>
+          <!-- Precio del Producto -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Precio</label>
+            <div class="col-8">
+              <input class="form-control" type="number" placeholder="Precio" formControlName="price">
+              <div *ngIf="formProduct.get('price').errors && (formProduct.get('price').touched 
+                                        || formProduct.get('price').dirty)" class="alert alert-danger"> El valor del precio es negativo por favor ingresa un precio mayor a cero
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating del Producto -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Rating</label>
+            <div class="col-8">
+              <input class="form-control" type="number" placeholder="Rating" formControlName="rating">
+              <div *ngIf="formProduct.get('rating').errors && (formProduct.get('rating').touched 
+                    || formProduct.get('rating').dirty)" class="alert alert-danger"> Ingrese un rating valido
+              </div>
+            </div>
+          </div>
+
+          <!-- Descripcion del Producto -->
+          <div class="form group row">
+            <label class="col-2 col-form-label">Descripción</label>
+            <div class="col-8">
+              <input class="form-control" type="text" placeholder="Descripción" formControlName="description">
+              <div *ngIf="formProduct.get('description').errors && (formProduct.get('description').touched 
+                   || formProduct.get('description').dirty)" class="alert alert-danger"> Ingrese un descripción
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Modal footer (click)="ocultarModal()"-->
+        <div class="modal-footer">
+          <button type="submit" [disabled]="!formProduct.valid" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+          <button (click)="ocultarModal()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
