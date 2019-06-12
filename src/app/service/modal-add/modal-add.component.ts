@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, AsyncValidator, AsyncValidatorFn, A
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/product/product.service';
 import { map } from 'rxjs/operators';
+import { ProductListComponent } from 'src/app/product/product-list/product-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-add',
@@ -12,12 +14,13 @@ import { map } from 'rxjs/operators';
 })
 export class ModalAddComponent implements OnInit {
 
-  formProduct: FormGroup
-  
+  formProduct: FormGroup;
+
   constructor( 
     private modalAddService: ModalAddService,
     private formBuilder:FormBuilder,
-    private productService: ProductService) 
+    private productService: ProductService,
+    private productListComponent: ProductListComponent)
     {
       this.formProduct = this.formBuilder.group({
         name: ["",[Validators.required]],
@@ -26,7 +29,6 @@ export class ModalAddComponent implements OnInit {
         price: ["",[Validators.required, Validators.min(0)]],
         description: ["",[Validators.required]],
         rating: ["",[Validators.required]]
-        
       })
     }
 
@@ -39,7 +41,17 @@ export class ModalAddComponent implements OnInit {
 
   saveData(){
     console.log(this.formProduct.value);
-    
+    let datos: any ={
+      name: this.formProduct.value.name,
+      code:this.formProduct.value.code,
+      date:this.formProduct.value.date,
+      price:this.formProduct.value.price,
+      description:this.formProduct.value.description,
+      rating:this.formProduct.value.rating,
+      image: ""
+    }
+    this.productListComponent.guardarProducto(datos);
+    this.ocultarModal();
   }
 
   codeValidator():AsyncValidatorFn{
@@ -54,11 +66,8 @@ export class ModalAddComponent implements OnInit {
             }
             console.log('codigo no existe');
             return null;
-            
           })
         );
     }
   }
-
-
 }
