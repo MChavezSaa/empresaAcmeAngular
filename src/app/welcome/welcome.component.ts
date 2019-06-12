@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
+  }
+
+  navegar(){
+    this.router.navigate(['product/product-list']);
+    //tambien se puede hacer navigate con parametros
+    //this.router.navigate(['product/product-list', list]);
   }
 
 }
