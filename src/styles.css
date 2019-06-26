@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
 /***********************  TOP Bar ********************/
-.sidebar{ width:220px;  background-color:rgb(211, 211, 211);transition: all 0.5s  ease-in-out; }
+.sidebar{ width:150px;  background-color:rgb(211, 211, 211);transition: all 0.5s  ease-in-out; }
 .bg-defoult{background-color:rgb(248, 249, 250);}
 .sidebar ul{ list-style:none; margin:0px; padding:0px; }
 .sidebar li a,.sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:rgb(32, 32, 32);border-left:0px solid #dedede;  text-decoration:none}

@@ -28,7 +28,8 @@ export class ModalAddComponent implements OnInit {
         date: ["",[Validators.required]],
         price: ["",[Validators.required, Validators.min(0)]],
         description: ["",[Validators.required]],
-        rating: ["",[Validators.required]]
+        rating: ["",[Validators.required]],
+        image: [""]
       })
     }
 
@@ -41,16 +42,7 @@ export class ModalAddComponent implements OnInit {
 
   saveData(){
     console.log(this.formProduct.value);
-    let datos: any ={
-      name: this.formProduct.value.name,
-      code:this.formProduct.value.code,
-      date:this.formProduct.value.date,
-      price:this.formProduct.value.price,
-      description:this.formProduct.value.description,
-      rating:this.formProduct.value.rating,
-      image: ""
-    }
-    this.productListComponent.guardarProducto(datos);
+     this.productListComponent.guardarProducto(this.formProduct.value);
     this.ocultarModal();
   }
 

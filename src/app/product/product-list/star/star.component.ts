@@ -24,7 +24,7 @@ export class StarComponent implements OnChanges {
       this.stars = 3;
     }else if (this.rating>120 && this.rating<=160){
       this.stars = 4;
-    }else if (this.rating>160 && this.rating<=200){
+    }else if (this.rating>160 ){
       this.stars = 5;
     }
     this.arr = new Array(this.stars).fill(1);

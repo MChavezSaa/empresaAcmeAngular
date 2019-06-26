@@ -75,13 +75,21 @@ export class ProductListComponent implements OnInit {
   }
 
   updateProduct(id: number, product: IProduct) {
-    this.productService.updateProduct(id, product).subscribe(
-      (res: any[]) => {
-        return this.productService.getProducts().subscribe(
-          (res: any[]) => {
-            this.productService.filteredProducts=res;
+    let datos: any = {
+      productName: ' Producto' + Math.round(Math.random() * (100 - 1) + 1),
+      productCode: this.productService.generarCodigo(),
+      releaseDate: '2019-03-07',
+      price: Math.round(Math.random() * (130 - 20) + 20),
+      description: 'Producto de prueba generado automaticamente',
+      starRating: Math.round(Math.random() * (200 - 1) + 1),
+      imageUrl: ''
+    };
+    this.productService.updateProduct(id, datos).subscribe(() => {
+        return this.productService.getProducts().subscribe((res: any[]) => {
+            this.productService.filteredProducts = res;
             this.productService.products = res;
-          }, err => console.log(err))
+          },
+          err => console.log(err));
       });
   }
 

@@ -32,7 +32,7 @@
                   <button (click)="toggleImage()" class="btn btn-primary">
                     <i class="fa fa-eye"></i>
                     {{showImage?'Ocultar':'Mostrar'}}
-                    Imágenes
+                  
                   </button>
                 </th>
                 <th>Producto</th>
@@ -47,7 +47,7 @@
             <tr *ngFor="let product of this.productService.filteredProducts">
               <td>
                 <img *ngIf="showImage" [src]="product.imageUrl | default: '../../assets/sin-imagen.png'"
-                  [title]="product.productName" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+                  [title]="product.productName"><!--[style.width.px]="imageWidth" [style.margin.px]="imageMargin"-->
               </td>
               <td>{{product.productName}}</td>
               <td>{{product.productCode | uppercase}}</td>
@@ -58,15 +58,15 @@
               </td>
               <td>
                 <button class="btn btn-success" (click)="viewProduct(product)">
-                  <i class="fas fa-eye">Ver</i>
+                  <i class="fas fa-eye"></i>
                 </button>
                 &nbsp;
-                <button class="btn btn-warning" (click)="updateProduct(product.productId,product)">
-                  <i class="fas fa-pencil-alt">Editar</i>
+                <button class="btn btn-warning" (click)="updateProduct(product.productId, product)">
+                  <i class="fas fa-pencil-alt"></i>
                 </button>
                 &nbsp;
                 <button class="btn btn-danger" (click)="deleteProduct(product.productId)">
-                  <i class="fas fa-trash-alt">Borrar</i>
+                  <i class="fas fa-trash-alt"></i>
                 </button>
             </tr>
           </table>

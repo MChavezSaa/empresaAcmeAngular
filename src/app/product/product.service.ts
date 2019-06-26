@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   updateProduct(id,product){
-    return this.http.put("http://localhost:3000/producto/"+id,product);
+    return this.http.put("http://localhost:3000/producto/"+ id, product);
   }
 
   searchProduct(code){
